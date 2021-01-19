@@ -28,8 +28,20 @@ def load_dataset():
 
     return train_set_x_orig, train_set_y_orig, test_set_x_orig, test_set_y_orig, classes
 
-def generate_dummy_data():
-    pass
+def generate_dummy_data(Type,Visualize=0):
+    if (Type == 'circular'):
+        np.random.seed(1)
+        train_X, train_Y = sklearn.datasets.make_circles(n_samples=300, noise=.05)
+        np.random.seed(2)
+        test_X, test_Y = sklearn.datasets.make_circles(n_samples=100, noise=.05)
+    # Visualize the data
+        if(Visualize==1):
+            plt.scatter(train_X[:, 0], train_X[:, 1], c=train_Y, s=40, cmap=plt.cm.Spectral);
+        train_X = train_X.T
+        train_Y = train_Y.reshape((1, train_Y.shape[0]))
+        test_X = test_X.T
+        test_Y = test_Y.reshape((1, test_Y.shape[0]))
+    return train_X, train_Y, test_X, test_Y
 
 
 
