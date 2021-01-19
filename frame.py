@@ -154,20 +154,20 @@ class MultiLayer:
             self.parameters["W" + str(i + 1)] = self.w[i]
             self.parameters["b" + str(i + 1)] = self.b[i]
 
-    def update_parameters(self, grads, learning_rate=1.2):
+    def update_parameters(self, grads, learning_rate=1.2 , reg_term=0, m = 1):
 
         for i in range(len(self.w)):
-            self.w[i] = self.w[i] - learning_rate * grads["dW" + str(i + 1)]
-            self.b[i] = self.b[i] - learning_rate * grads["db" + str(i + 1)]
+            self.w[i] = (1-reg_term/m) * self.w[i] - learning_rate * grads["dW" + str(i + 1)]
+            self.b[i] = (1-reg_term/m) * self.b[i] - learning_rate * grads["db" + str(i + 1)]
 
         self.set_parameters_internal()
 
         return self.parameters
 
-    def train(self, X, Y, num_iterations=10000, print_cost=False , print_cost_each=100, cont=0, learning_rate=1 , regu_term=0 , batch_size=0 , opt_func=gd_optm, param_dic=None):
+    def train(self, X, Y, num_iterations=10000, print_cost=False , print_cost_each=100, cont=0, learning_rate=1 , reg_term=0 , batch_size=0 , opt_func=gd_optm, param_dic=None):
 
 
-        parameters , costs = opt_func(self,X,Y , num_iterations,print_cost,print_cost_each,cont,learning_rate,regu_term,batch_size , param_dic)
+        parameters , costs = opt_func(self,X,Y , num_iterations,print_cost,print_cost_each,cont,learning_rate,reg_term,batch_size , param_dic)
         return parameters , costs
 
     def predict(self, X):
