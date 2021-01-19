@@ -77,7 +77,16 @@ def generate_dummy_data(Type,Visualize=0):
         no_structure = np.random.rand(N, 2), np.random.rand(N, 2)
 
         return noisy_circles, noisy_moons, blobs, gaussian_quantiles, no_structure
+    if(Type == '2D'):
+        data = scipy.io.loadmat('datasets/data.mat')
+        train_X = data['X'].T
+        train_Y = data['y'].T
+        test_X = data['Xval'].T
+        test_Y = data['yval'].T
+        if (Visualize == 1):
+            plt.scatter(train_X[0, :], train_X[1, :], c=train_Y[0,:], s=40,cmap=plt.cm.Spectral);
 
+        return train_X, train_Y, test_X, test_Y
 X = np.array(
            [
                       [1,1],
