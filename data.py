@@ -15,7 +15,7 @@ def batch_normlize(x):
 def flatten(x):
     return x.reshape(x.shape[0], -1).T
 
-def onehot(y_train)
+def onehot(y_train):
 
   y = np.zeros((y_train.size, y_train.max()+1))
   y  [np.arange(y_train.size),y_train] = 1
