@@ -130,8 +130,8 @@ def determine_der_cost_func(func):
         return svm_der
     if func == multiclass_perceptron_loss:
         return multiclass_perceptron_loss_der
-    if func == multiclass_svm_loss:
-        return multiclass_svm_loss_der
+    if func == multiclass_svm:
+        return multiclass_svm_der
     if func == multinomial_logistic_loss:
         return multinomial_logistic_loss_der
 
