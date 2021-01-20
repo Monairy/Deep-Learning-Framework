@@ -81,13 +81,8 @@ def multinomial_logistic_loss(m, A, Y):
 
 def multinomial_logistic_loss_der(m, A, Y):
     p = np.zeros(A.shape)
-    i = 0
-    while i < m:
-        if Y[i] == 1:
-            p[i] = - (1 - A[i])
-        elif Y[i] == 0:
-            p[i] = A[i]
-        i += 1
+    p[Y == 1] = -(1 - A[Y == 1])
+    p[Y == 0] = A[Y == 0]
     return p
 
 def square_loss(m, A, Y):
