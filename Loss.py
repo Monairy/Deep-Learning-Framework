@@ -103,7 +103,7 @@ def square_loss(m, A, Y):
 
 
 def square_loss_der(m, A, Y):
-    return (-1/m) * (Y - A)
+    return (1/m) * (A - Y)
 
 
 def logistic_sigmoid_loss(m, A, Y):
