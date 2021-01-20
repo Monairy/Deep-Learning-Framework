@@ -41,6 +41,13 @@ def cross_multi_class(m, A, Y): # Multiclass Log LikelihoodLoss Function - Logis
     # print("in cross multi")
     return cost
 
+
+def cross_multi_class_der(m, A, Y):
+    z1 = np.array(A, copy=True)
+    y1 = np.array(Y, copy=True)
+    y1[y1 == 1] = -1
+    return A - Y
+
 def multiclass_perceptron_loss(m, A, Y):
     D = np.maximum(A - np.max(Y*A), 0)
     cost = (1 / m) * np.sum(np.max(D))
@@ -67,14 +74,47 @@ def multiclass_svm_der(m, A, Y):
     else:
         return 0
 
-# def multinomial_logistic_regression_loss(m, A, Y):
-#    cost = (-1 / m) * np.sum((Y) * (np.log(A)))
+def multinomial_logistic_loss(m, A, Y):
+    cost = np.sum(-np.max(A * Y) + np.log(np.sum(np.exp(A))))
+    return cost
 
-def cross_multi_class_der(m, A, Y):
-    z1 = np.array(A, copy=True)
-    y1 = np.array(Y, copy=True)
-    y1[y1 == 1] = -1
-    return A - Y
+
+def multinomial_logistic_loss_der(m, A, Y):
+    p = np.zeros(A.shape)
+    i = 0
+    while i < m:
+        if Y[i] == 1:
+            p[i] = - (1 - A[i])
+        elif Y[i] == 0:
+            p[i] = A[i]
+        i += 1
+    return p
+
+def square_loss(m, A, Y):
+    cost = (1/2*m) * np.sum(np.square(Y - A))
+    return cost
+
+
+def square_loss_der(m, A, Y):
+    return (-1/m) * (Y - A)
+
+
+def logistic_sigmoid_loss(m, A, Y):
+    cost = (-1/m) * np.sum(np.log(0.5*Y - 0.5 + A))
+    return cost
+
+
+def logistic_sigmoid_loss_der(m, A, Y):
+    return (- 1) / (0.5*Y - 0.5 + A)
+
+
+def logistic_id_loss(m, A, Y):
+    cost = (1 / m) * np.sum(np.log(1 + np.exp(- Y * A)))
+    return cost
+
+
+def logistic_id_loss_der(m, A, Y):
+    return (1 / m) * (- Y * np.exp(- Y * A)) / (1 + np.exp(- Y * A))
 
 
 def determine_der_cost_func(func):
@@ -82,4 +122,16 @@ def determine_der_cost_func(func):
         return cross_entropy_der
     if func == cross_multi_class:
         return cross_multi_class_der
+    if func == square_loss:
+        return square_loss_der
+    if func == perceptron_criteria:
+        return perceptron_criteria_der
+    if func == svm:
+        return svm_der
+    if func == multiclass_perceptron_loss:
+        return multiclass_perceptron_loss_der
+    if func == multiclass_svm_loss:
+        return multiclass_svm_loss_der
+    if func == multinomial_logistic_loss:
+        return multinomial_logistic_loss_der
 
