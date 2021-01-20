@@ -1,6 +1,7 @@
 import numpy as np
 
 
+
 def batch_normlize(x):
     eps=0.00001
     
@@ -11,6 +12,13 @@ def batch_normlize(x):
  
     return xnormalized
 
+
+def flatten(x):
+    return x.reshape(train_set_x_orig.shape[0], -1).T
+
+
+
+
 X = np.array(
            [
                       [1,1],
@@ -20,3 +28,6 @@ X = np.array(
 
 y=batch_normlize(X)
 print(y)
+ 
+    
+    
