@@ -16,20 +16,32 @@ def perceptron_criteria(m, A, Y):
 
 def perceptron_criteria_der(m, A, Y):
     #return np.maximum()
-    if Y * A > 0:
-        return 0
-    else:
-        return - np.gradient(A)
+    #if Y * A > 0:
+    #    return 0
+    #else:
+    #    return - np.gradient(A)
+    p = Y * A
+    b = np.zeros(A.shape)
+    b[p > 0] = 0
+    b[p <= 0] = -Y[p <= 0]
+    b[b == 0] = -1
+    return b
 
 def svm(m, A, Y):
     cost = (1 / m) * np.sum(np.maximum(0, 1 - Y * A))
     return cost
 
 def svm_der(m, A, Y):
-    if Y * A - 1 > 0:
-        return 0
-    else:
-        return - np.gradient(A)
+    #if Y * A - 1 > 0:
+    #    return 0
+    #else:
+    #    return - np.gradient(A)
+    p = Y * A - 1
+    b = np.zeros(A.shape)
+    b[p > 0] = 0
+    b[p <= 0] = -Y[p <= 0]
+    b[b == 0] = -1
+    return b
 
 def cross_multi_class(m, A, Y): # Multiclass Log LikelihoodLoss Function - Logistic Regression SoftMax Activation Function
     # v1 = Y * A
