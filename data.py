@@ -1,7 +1,6 @@
 import numpy as np
 
 
-
 def batch_normlize(x):
     eps=0.00001
     
@@ -14,9 +13,14 @@ def batch_normlize(x):
 
 
 def flatten(x):
-    return x.reshape(train_set_x_orig.shape[0], -1).T
+    return x.reshape(x.shape[0], -1).T
 
+def onehot(y_train)
 
+  y = np.zeros((y_train.size, y_train.max()+1))
+  y  [np.arange(y_train.size),y_train] = 1
+  y = y.T
+  return y
 
 
 X = np.array(
@@ -28,6 +32,5 @@ X = np.array(
 
 y=batch_normlize(X)
 print(y)
- 
-    
-    
+
+
