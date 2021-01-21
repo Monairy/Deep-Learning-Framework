@@ -6,7 +6,7 @@ def save(filename,model):
 
     Parameters:
     filename (string): Path of file to be saved in, filename must be ".sav" type.
-    model : Object "model" required to be saved.
+    model    (object): "model" required to be saved.
 
     Returns:
     None
@@ -21,7 +21,7 @@ def retrive(filename):
     filename (string): Path of file to be retrived, filename must be ".sav" type.
 
     Returns:
-    model : Object of model that saved before as whole with its structure(Layers,Nodes,Activation functions)
+    object : Object of model that saved before as whole with its structure(Layers,Nodes,Activation functions)
 
    """
     return pickle.load(open(filename, 'rb'))
