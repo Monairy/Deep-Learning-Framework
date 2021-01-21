@@ -34,7 +34,7 @@ def perceptron_criteria_der(m, A, Y):
     #    return - np.gradient(A)
     """The Derivative of Perceptron Criteria loss Function
     Parameters: m(int):examples no. / A(float vector): The output y_hat (score)  / Y(float vector): The label
-    Returns (Array of floats): The derivative values of cost function
+    Returns b(Array of floats): The derivative values of cost function
     """
     p = Y * A
     b = np.zeros(A.shape)
@@ -58,7 +58,7 @@ def svm_der(m, A, Y):
     #    return - np.gradient(A)
     """The Derivative of Hinge Loss (Soft Margin) SVM Function
     Parameters: m(int):examples no. / A(float vector): The output y_hat (score)  / Y(float vector): The label
-    Returns (Array of floats): The derivative values of cost function
+    Returns b(Array of floats): The derivative values of cost function
     """
     p = Y * A - 1
     b = np.zeros(A.shape)
@@ -103,14 +103,18 @@ def multiclass_perceptron_loss(m, A, Y):
 def multiclass_perceptron_loss_der(m, A, Y):
     """The Derivative of Multiclass Perceptron Loss Function
     Parameters: m(int):examples no. / A(float vector): The output y_hat (score)  / Y(float vector): The label
-    Returns (Array of floats): The derivative values of cost function
+    Returns p(Array of floats): The derivative values of cost function
     """
-    if np.arange(np.shape(A)) == np.argmax(Y*A):
+    """if np.arange(np.shape(A)) == np.argmax(Y*A):
         return - np.gradient(np.max(Y*A))
     elif np.arange(np.shape(A)) != np.argmax(Y*A):
         return np.gradient(A)
     else:
-        return 0
+        return 0"""
+    p = np.zeros(A.shape)
+    p[np.arange(np.shape(A)) == np.argmax(Y*A)] = - np.gradient(np.max(Y*A))
+    p[np.arange(np.shape(A)) != np.argmax(Y*A)] = np.gradient(A)
+    return p
 
 def multiclass_svm(m, A, Y):
     """Multiclass Weston-Watkins SVM Loss
@@ -123,15 +127,19 @@ def multiclass_svm(m, A, Y):
 
 def multiclass_svm_der(m, A, Y):
     """The Derivative of Multiclass Weston-Watkins SVM Loss Function
-    Parameters: m(int):examples no. / A(float vector): The output y_hat (score)  / Y(float vector): The label
-    Returns (Array of floats): The derivative values of cost function
+    Parameters: m (int):examples no. / A (float vector): The output y_hat (score)  / Y (float vector): The label
+    Returns: p (Array of floats): The derivative values of cost function
     """
-    if np.arange(np.shape(A)) == np.argmax(Y*A):
+    """if np.arange(np.shape(A)) == np.argmax(Y*A):
         return - np.gradient(np.max(Y*A))
     elif np.arange(np.shape(A)) != np.argmax(Y*A):
         return np.gradient(A)
     else:
-        return 0
+        return 0"""
+    p = np.zeros(A.shape)
+    p[np.arange(np.shape(A)) == np.argmax(Y*A)] = - np.gradient(np.max(Y*A))
+    p[np.arange(np.shape(A)) != np.argmax(Y*A)] = np.gradient(A)
+    return p
 
 def multinomial_logistic_loss(m, A, Y):
     """Multinomial Logistic Regression using Softmax Activation
