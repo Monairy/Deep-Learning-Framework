@@ -112,8 +112,8 @@ def multiclass_perceptron_loss_der(m, A, Y):
     else:
         return 0"""
     p = np.zeros(A.shape)
-    p[np.arange(np.shape(A)) == np.argmax(Y*A)] = - np.gradient(np.max(Y*A))
-    p[np.arange(np.shape(A)) != np.argmax(Y*A)] = np.gradient(A)
+    p[np.arange(A.shape[0]) == np.argmax(Y*A)] = -np.max(Y*A)
+    p[np.arange(A.shape[0]) != np.argmax(Y*A)] = np.gradient(A)[np.arange(A.shape[0]) != np.argmax(Y * A)]
     return p
 
 def multiclass_svm(m, A, Y):
@@ -137,8 +137,8 @@ def multiclass_svm_der(m, A, Y):
     else:
         return 0"""
     p = np.zeros(A.shape)
-    p[np.arange(np.shape(A)) == np.argmax(Y*A)] = - np.gradient(np.max(Y*A))
-    p[np.arange(np.shape(A)) != np.argmax(Y*A)] = np.gradient(A)
+    p[np.arange(A.shape[0]) == np.argmax(Y*A)] = -np.max(Y*A)
+    p[np.arange(A.shape[0]) != np.argmax(Y*A)] = np.gradient(A)[np.arange(A.shape[0]) != np.argmax(Y * A)]
     return p
 
 def multinomial_logistic_loss(m, A, Y):
