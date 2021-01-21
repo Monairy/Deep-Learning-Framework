@@ -153,9 +153,3 @@ def f1_score(A,Y,thres=0.5):
     f1=float((2*prec*rec)/float(prec+rec))
     return f1
 
-
-A=np.array([[0.8,0.2,0,0.3,0.8,0.6,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,0.1]])
-Y=np.array([[1,0,0,1,1,1,0,1,0,1,0,1,1,0,1]])
-
-print_conf_mat(A,Y)
-print(accuracy_score(A,Y))
