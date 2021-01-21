@@ -208,7 +208,7 @@ def logistic_id_loss_der(m, A, Y):
     Parameters: m(int):examples no. / A(float vector): The output y_hat (score)  / Y(float vector): The label
     Returns (Array of floats): The derivative values of cost function
     """
-    return - Y * np.exp(- Y * A)) / (1 + np.exp(- Y * A)
+    return - Y * np.exp(- Y * A)) / (1 + np.exp(- Y * A))
 
 
 def determine_der_cost_func(func):
