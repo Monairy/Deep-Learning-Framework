@@ -27,20 +27,16 @@ def perceptron_criteria(m, A, Y):
     return cost
 
 def perceptron_criteria_der(m, A, Y):
-    #return np.maximum()
-    #if Y * A > 0:
-    #    return 0
-    #else:
-    #    return - np.gradient(A)
     """The Derivative of Perceptron Criteria loss Function
     Parameters: m(int):examples no. / A(float vector): The output y_hat (score)  / Y(float vector): The label
     Returns b(Array of floats): The derivative values of cost function
     """
     p = Y * A
     b = np.zeros(A.shape)
-    b[p > 0] = 0
+    #b[p > 0] = 0
     b[p <= 0] = -Y[p <= 0]
     b[b == 0] = -1
+    b[p > 0] = 0
     return b
 
 def svm(m, A, Y):
@@ -52,20 +48,22 @@ def svm(m, A, Y):
     return cost
 
 def svm_der(m, A, Y):
-    #if Y * A - 1 > 0:
-    #    return 0
-    #else:
-    #    return - np.gradient(A)
     """The Derivative of Hinge Loss (Soft Margin) SVM Function
     Parameters: m(int):examples no. / A(float vector): The output y_hat (score)  / Y(float vector): The label
     Returns b(Array of floats): The derivative values of cost function
     """
     p = Y * A - 1
     b = np.zeros(A.shape)
-    b[p > 0] = 0
+    #b[p > 0] = 0
     b[p <= 0] = -Y[p <= 0]
     b[b == 0] = -1
+    b[p > 0] = 0
     return b
+
+m = 4
+A = np.array([.3, -.4, -.5, 1.6])
+Y = np.array([0, 1, 0, 1])
+print(svm_der(m, A, Y))
 
 def cross_multi_class(m, A, Y): # Multiclass Log LikelihoodLoss Function - Logistic Regression SoftMax Activation Function
     # v1 = Y * A
@@ -96,8 +94,8 @@ def multiclass_perceptron_loss(m, A, Y):
     Parameters: m(int):examples no. / A(float vector): The output y_hat (score)  / Y(float vector): The label
     Returns: cost(float): the total loss
     """
-    D = np.maximum(A - np.max(Y*A), 0)
-    cost = (1 / m) * np.sum(np.max(D))
+    D = np.maximum(A - np.max(Y*A, axis=1).reshape(m,1), 0)
+    cost = (1 / m) * np.sum(np.max(D, axis=1))
     return cost
 
 def multiclass_perceptron_loss_der(m, A, Y):
@@ -121,8 +119,8 @@ def multiclass_svm(m, A, Y):
     Parameters: m(int):examples no. / A(float vector): The output y_hat (score)  / Y(float vector): The label
     Returns: cost(float): the total loss
     """
-    D = np.maximum(1 + A - np.max(Y*A), 0)
-    cost = (1 / m) * np.sum(np.sum(D))
+    D = np.maximum(1 + A - np.max(Y*A, axis=1).reshape(m,1), 0)
+    cost = (1 / m) * (np.sum(np.sum(D, axis=1)) - m)
     return cost
 
 def multiclass_svm_der(m, A, Y):
@@ -208,7 +206,7 @@ def logistic_id_loss_der(m, A, Y):
     Parameters: m(int):examples no. / A(float vector): The output y_hat (score)  / Y(float vector): The label
     Returns (Array of floats): The derivative values of cost function
     """
-    return - Y * np.exp(- Y * A)) / (1 + np.exp(- Y * A))
+    return - (Y * np.exp(- Y * A)) / (1 + np.exp(- Y * A))
 
 
 def determine_der_cost_func(func):
@@ -232,3 +230,9 @@ def determine_der_cost_func(func):
         return multiclass_svm_der
     if func == multinomial_logistic_loss:
         return multinomial_logistic_loss_der
+
+
+m = 3
+A = np.array([[3, 4, 5, 6], [7, 8, 9, 5], [1, 0, 4, 52]])
+Y = np.array([[0, 0, 0, 1], [0, 1, 0, 0], [0, 0, 1, 0]])
+print(multiclass_svm(m, A, Y))
