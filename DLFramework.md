@@ -95,7 +95,8 @@ Classes
     :
 
     `points_y`
-    :Module frame
+    :
+Module frame
 ============
 
 Classes
@@ -325,7 +326,8 @@ Classes
             eps(float) : the small value added to adamgrads to make sure there is no division by zero
         
         returns:
-            dictionary contains the updated parametersModule activations
+            dictionary contains the updated parameters
+Module activations
 ==================
 
 Functions
@@ -461,7 +463,8 @@ Functions
     
     Returns:
         
-        (numpy array): Returning array of same size as input "A" after applying derivative of tanh().Module optmizers
+        (numpy array): Returning array of same size as input "A" after applying derivative of tanh().
+Module optmizers
 ================
 
 Functions
@@ -633,7 +636,8 @@ Functions
     Returns:
         
         dictionary:parameters a dictionary that contains the updated weights and biases
-        array:Costs an array that contain the cost of each iterationModule Loss
+        array:Costs an array that contain the cost of each iteration
+Module Loss
 ===========
 
 Functions
@@ -887,7 +891,8 @@ Functions
         Y(float vector): The label
     
     Returns:
-        b(Array of floats): The derivative values of cost functionModule evaluation
+        b(Array of floats): The derivative values of cost function
+Module evaluation
 =================
 
 Functions
