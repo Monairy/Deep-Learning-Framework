@@ -72,13 +72,29 @@ class visualize:
  graph=fig.subplots()
 
  def __init__(self,title,y_label,x_label):
+   """ visualization class to draw live cost after training, to initialize an instance from this class supply 3 parameters
+
+    Parameters:
+    title (string): title of the graph
+    y_label (string): label of y coordinate
+    x_label (string: label of x coordinate
+
+   """
      
             self.graph.set_ylabel(y_label)
             self.graph.set_xlabel(x_label)
             self.graph.set_title(title)
             
  def addpoint_y(self,pointy):
-     
+    """ This function is used to add a new point to be drawn on a graph 
+
+    Parameters:
+    pointy (float): value of y coordinate 
+
+    Returns:
+    graph : graph drawn after adding new point
+
+   """
          self.points_y.append(pointy)
           
          if (len(self.points_x) ==0):
@@ -92,9 +108,6 @@ class visualize:
          plt.pause(0.0001)
 
             
-    
-        
-
 
 def save(filename,model):
      """ This function saves the model ( all of it's parameters, weights, losses ,... ) in an external file 
