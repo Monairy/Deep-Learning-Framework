@@ -31,13 +31,14 @@ def perceptron_criteria_der(m, A, Y):
     Parameters: m(int):examples no. / A(float vector): The output y_hat (score)  / Y(float vector): The label
     Returns b(Array of floats): The derivative values of cost function
     """
+    A.reshape(m)
+    Y.reshape(m)
     p = Y * A
     b = np.zeros(A.shape)
-    #b[p > 0] = 0
+    b[p > 0] = 0
     b[p <= 0] = -Y[p <= 0]
     b[b == 0] = -1
-    b[p > 0] = 0
-    return b
+    return b#.reshape(1,m)
 
 def svm(m, A, Y):
     """Hinge Loss (Soft Margin) SVM
@@ -52,13 +53,14 @@ def svm_der(m, A, Y):
     Parameters: m(int):examples no. / A(float vector): The output y_hat (score)  / Y(float vector): The label
     Returns b(Array of floats): The derivative values of cost function
     """
+    A.reshape(m)
+    Y.reshape(m)
     p = Y * A - 1
     b = np.zeros(A.shape)
-    #b[p > 0] = 0
+    b[p > 0] = 0
     b[p <= 0] = -Y[p <= 0]
     b[b == 0] = -1
-    b[p > 0] = 0
-    return b
+    return b#.reshape(1,m)
 
 m = 4
 A = np.array([.3, -.4, -.5, 1.6])
