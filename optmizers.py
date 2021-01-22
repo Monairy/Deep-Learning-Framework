@@ -2,23 +2,27 @@ import numpy as np
 import dllf as d
 
 def gd_optm(model, X, Y, num_iterations=10000, print_cost=False ,print_cost_each=100, cont=0, learning_rate=1, reg_term=0, batch_size=0 , param_dic=None,drop=0):
-    """Summary: The function applies the  gradient descent optimizer to update the weight and bias parameters.
-                   Parameters:
-                   :param model (multilayer): instance of the multilayer class contains the models parameters to be updated.
-                   :param X: the input feature vector.
-                   :param Y: the labels.
-                   :param num_iterations: number of epochs.
-                   :param print_cost: optional parameter to show the cost function.
-                   :param print_cost_each: this parameter is used when "print_cost" is set True to specify when to print the cost ie: after how many iterations.
-                   :param cont: not used in this function
-                   :param learning_rate: learning rate to be used in updating the parameters.
-                   :param reg_term: lamda term added to the loss function to prevent over fitting. This parameter can be set to zero if no regulization is needed.
-                   :param batch_size: This parameter is used to specify if the learning process is batch , online or minibatch.
-                   :param param_dic: not used in this function.
-                   :param drop: dropout parameter to have the option of using the dropout technique.
-                   Returns:
-                   dictionary:parameters a dictionary that contains the updated weights and biases
-                   array:Costs an array that contain the cost of each iteration
+    """The function applies the  gradient descent optimizer to update the weight and bias parameters.
+   
+    Parameters:
+       
+        model (multilayer): instance of the multilayer class contains the models parameters to be updated.
+        X: the input feature vector.
+        Y: the labels.
+        num_iterations: number of epochs.
+        print_cost: optional parameter to show the cost function.
+        print_cost_each: this parameter is used when "print_cost" is set True to specify when to print the cost ie: after how many iterations.
+        cont: not used in this function
+        learning_rate: learning rate to be used in updating the parameters.
+        reg_term: lamda term added to the loss function to prevent over fitting. This parameter can be set to zero if no regulization is needed.
+        batch_size: This parameter is used to specify if the learning process is batch , online or minibatch.
+        param_dic: not used in this function.
+        drop: dropout parameter to have the option of using the dropout technique.
+    
+    Returns:
+        
+        dictionary:parameters a dictionary that contains the updated weights and biases
+        array:Costs an array that contain the cost of each iteration
 
     """
 
@@ -66,23 +70,27 @@ def gd_optm(model, X, Y, num_iterations=10000, print_cost=False ,print_cost_each
 
         return parameters, costs
 def adagrad_optm(model, X, Y, num_iterations=10000, print_cost=False ,print_cost_each=100, cont=0, learning_rate=1, reg_term=0, batch_size=0 , param_dic=None,drop=0):
-    """Summary: The function applies the adagrad optimizer to update the weight and bias parameters.
+    """The function applies the adagrad optimizer to update the weight and bias parameters.
+    
     Parameters:
-    :param model (multilayer): instance of the multilayer class contains the models parameters to be updated.
-    :param X: the input feature vector.
-    :param Y: the labels.
-    :param num_iterations: number of epochs.
-    :param print_cost: optional parameter to show the cost function.
-    :param print_cost_each: this parameter is used when "print_cost" is set True to specify when to print the cost ie: after how many iterations.
-    :param cont: not used in this function
-    :param learning_rate: learning rate to be used in updating the parameters.
-    :param reg_term: lamda term added to the loss function to prevent over fitting. This parameter can be set to zero if no regulization is needed.
-    :param batch_size: This parameter is used to specify if the learning process is batch , online or minibatch.
-    :param param_dic: not used in this function.
-    :param drop: dropout parameter to have the option of using the dropout technique.
+       
+        model (multilayer): instance of the multilayer class contains the models parameters to be updated.
+        X: the input feature vector.
+        Y: the labels.
+        num_iterations: number of epochs.
+        print_cost: optional parameter to show the cost function.
+        print_cost_each: this parameter is used when "print_cost" is set True to specify when to print the cost ie: after how many iterations.
+        cont: not used in this function
+        learning_rate: learning rate to be used in updating the parameters.
+        reg_term: lamda term added to the loss function to prevent over fitting. This parameter can be set to zero if no regulization is needed.
+        batch_size: This parameter is used to specify if the learning process is batch , online or minibatch.
+        param_dic: not used in this function.
+        drop: dropout parameter to have the option of using the dropout technique.
+    
     Returns:
-    dictionary:parameters a dictionary that contains the updated weights and biases
-    array:Costs an array that contain the cost of each iteration
+       
+        dictionary: parameters a dictionary that contains the updated weights and biases
+        array: Costs an array that contain the cost of each iteration
 
     """
     costs = []
@@ -142,21 +150,25 @@ def adagrad_optm(model, X, Y, num_iterations=10000, print_cost=False ,print_cost
 
         return parameters, costs
 def RMS_optm(model, X, Y, num_iterations=10000, print_cost=False ,print_cost_each=100, cont=0, learning_rate=1, reg_term=0, batch_size=0 , param_dic=None,drop=0):
-    """Summary: The function applies the RMS optimizer to update the weight and bias parameters.
-        Parameters:
-        :param model (multilayer): instance of the multilayer class contains the models parameters to be updated.
-        :param X: the input feature vector.
-        :param Y: the labels.
-        :param num_iterations: number of epochs.
-        :param print_cost: optional parameter to show the cost function.
-        :param print_cost_each: this parameter is used when "print_cost" is set True to specify when to print the cost ie: after how many iterations.
-        :param cont: not used in this function
-        :param learning_rate: learning rate to be used in updating the parameters.
-        :param reg_term: lamda term added to the loss function to prevent over fitting. This parameter can be set to zero if no regulization is needed.
-        :param batch_size: This parameter is used to specify if the learning process is batch , online or minibatch.
-        :param param_dic: the dictionary that contains the value of the hyper parameter rho
-        :param drop: dropout parameter to have the option of using the dropout technique.
-        Returns:
+    """The function applies the RMS optimizer to update the weight and bias parameters.
+   
+    Parameters:
+       
+        model (multilayer): instance of the multilayer class contains the models parameters to be updated.
+        X: the input feature vector.
+        Y: the labels.
+        num_iterations: number of epochs.
+        print_cost: optional parameter to show the cost function.
+        print_cost_each: this parameter is used when "print_cost" is set True to specify when to print the cost ie: after how many iterations.
+        cont: not used in this function
+        learning_rate: learning rate to be used in updating the parameters.
+        reg_term: lamda term added to the loss function to prevent over fitting. This parameter can be set to zero if no regulization is needed.
+        batch_size: This parameter is used to specify if the learning process is batch , online or minibatch.
+        param_dic: the dictionary that contains the value of the hyper parameter rho
+        drop: dropout parameter to have the option of using the dropout technique.
+    
+    Returns:
+        
         dictionary:parameters a dictionary that contains the updated weights and biases
         array:Costs an array that contain the cost of each iteration
 
@@ -221,25 +233,29 @@ def RMS_optm(model, X, Y, num_iterations=10000, print_cost=False ,print_cost_eac
 
         return parameters, costs
 def adadelta_optm(model, X, Y, num_iterations=10000, print_cost=False ,print_cost_each=100, cont=0, learning_rate=1, reg_term=0, batch_size=0 ,param_dic=None,drop=0):
-    """Summary: The function applies the adadelta optimizer to update the weight and bias parameters.
-               Parameters:
-               :param model (multilayer): instance of the multilayer class contains the models parameters to be updated.
-               :param X: the input feature vector.
-               :param Y: the labels.
-               :param num_iterations: number of epochs.
-               :param print_cost: optional parameter to show the cost function.
-               :param print_cost_each: this parameter is used when "print_cost" is set True to specify when to print the cost ie: after how many iterations.
-               :param cont: not used in this function
-               :param learning_rate: learning rate to be used in updating the parameters.
-               :param reg_term: lamda term added to the loss function to prevent over fitting. This parameter can be set to zero if no regulization is needed.
-               :param batch_size: This parameter is used to specify if the learning process is batch , online or minibatch.
-               :param param_dic: the dictionary that contains the value of the hyper parameters rho and epsilon.
-               :param drop: dropout parameter to have the option of using the dropout technique.
-               Returns:
-               dictionary:parameters a dictionary that contains the updated weights and biases
-               array:Costs an array that contain the cost of each iteration
+    """The function applies the adadelta optimizer to update the weight and bias parameters.
+    
+    Parameters:
+        
+        model (multilayer): instance of the multilayer class contains the models parameters to be updated.
+        X: the input feature vector.
+        Y: the labels.
+        num_iterations: number of epochs.
+        print_cost: optional parameter to show the cost function.
+        print_cost_each: this parameter is used when "print_cost" is set True to specify when to print the cost ie: after how many iterations.
+        cont: not used in this function
+        learning_rate: learning rate to be used in updating the parameters.
+        reg_term: lamda term added to the loss function to prevent over fitting. This parameter can be set to zero if no regulization is needed.
+        batch_size: This parameter is used to specify if the learning process is batch , online or minibatch.
+        param_dic: the dictionary that contains the value of the hyper parameters rho and epsilon.
+        drop: dropout parameter to have the option of using the dropout technique.
+    
+    Returns:
+    
+        dictionary: parameters a dictionary that contains the updated weights and biases
+        array: Costs an array that contain the cost of each iteration
 
-           """
+    """
 
     costs = []
     rho = param_dic["rho"]
@@ -310,23 +326,27 @@ def adadelta_optm(model, X, Y, num_iterations=10000, print_cost=False ,print_cos
 
         return parameters, costs
 def adam_optm(model, X, Y, num_iterations=10000, print_cost=False ,print_cost_each=100, cont=0, learning_rate=1, reg_term=0, batch_size=0 ,param_dic=None,drop=0):
-    """Summary: The function applies the adam optimizer to update the weight and bias parameters.
-           Parameters:
-           :param model (multilayer): instance of the multilayer class contains the models parameters to be updated.
-           :param X: the input feature vector.
-           :param Y: the labels.
-           :param num_iterations: number of epochs.
-           :param print_cost: optional parameter to show the cost function.
-           :param print_cost_each: this parameter is used when "print_cost" is set True to specify when to print the cost ie: after how many iterations.
-           :param cont: not used in this function
-           :param learning_rate: learning rate to be used in updating the parameters.
-           :param reg_term: lamda term added to the loss function to prevent over fitting. This parameter can be set to zero if no regulization is needed.
-           :param batch_size: This parameter is used to specify if the learning process is batch , online or minibatch.
-           :param param_dic: the dictionary that contains the value of the hyper parameters rho , rhof and epsilon.
-           :param drop: dropout parameter to have the option of using the dropout technique.
-           Returns:
-           dictionary:parameters a dictionary that contains the updated weights and biases
-           array:Costs an array that contain the cost of each iteration
+    """The function applies the adam optimizer to update the weight and bias parameters.
+    
+    Parameters:
+        
+        model (multilayer): instance of the multilayer class contains the models parameters to be updated.
+        X: the input feature vector.
+        Y: the labels.
+        num_iterations: number of epochs.
+        print_cost: optional parameter to show the cost function.
+        print_cost_each: this parameter is used when "print_cost" is set True to specify when to print the cost ie: after how many iterations.
+        cont: not used in this function
+        learning_rate: learning rate to be used in updating the parameters.
+        reg_term: lamda term added to the loss function to prevent over fitting. This parameter can be set to zero if no regulization is needed.
+        batch_size: This parameter is used to specify if the learning process is batch , online or minibatch.
+        param_dic: the dictionary that contains the value of the hyper parameters rho , rhof and epsilon.
+        drop: dropout parameter to have the option of using the dropout technique.
+    
+    Returns:
+        
+        dictionary:parameters a dictionary that contains the updated weights and biases
+        array:Costs an array that contain the cost of each iteration
 
        """
 
@@ -397,23 +417,27 @@ def adam_optm(model, X, Y, num_iterations=10000, print_cost=False ,print_cost_ea
 
         return parameters, costs
 def mom_optm(model, X, Y, num_iterations=10000, print_cost=False ,print_cost_each=100, cont=0, learning_rate=1, reg_term=0, batch_size=0 , param_dic=None,drop=0):
-    """Summary: The function applies the momentum optimizer to update the weight and bias parameters.
-               Parameters:
-               :param model (multilayer): instance of the multilayer class contains the models parameters to be updated.
-               :param X: the input feature vector.
-               :param Y: the labels.
-               :param num_iterations: number of epochs.
-               :param print_cost: optional parameter to show the cost function.
-               :param print_cost_each: this parameter is used when "print_cost" is set True to specify when to print the cost ie: after how many iterations.
-               :param cont: not used in this function
-               :param learning_rate: learning rate to be used in updating the parameters.
-               :param reg_term: lamda term added to the loss function to prevent over fitting. This parameter can be set to zero if no regulization is needed.
-               :param batch_size: This parameter is used to specify if the learning process is batch , online or minibatch.
-               :param param_dic: the dictionary that contains the value of the hyper parameters beta.
-               :param drop: dropout parameter to have the option of using the dropout technique.
-               Returns:
-               dictionary:parameters a dictionary that contains the updated weights and biases
-               array:Costs an array that contain the cost of each iteration
+    """The function applies the momentum optimizer to update the weight and bias parameters.
+    
+    Parameters:
+                
+        model (multilayer): instance of the multilayer class contains the models parameters to be updated.
+        X: the input feature vector.
+        Y: the labels.
+        num_iterations: number of epochs.
+        print_cost: optional parameter to show the cost function.
+        print_cost_each: this parameter is used when "print_cost" is set True to specify when to print the cost ie: after how many iterations.
+        cont: not used in this function
+        learning_rate: learning rate to be used in updating the parameters.
+        reg_term: lamda term added to the loss function to prevent over fitting. This parameter can be set to zero if no regulization is needed.
+        batch_size: This parameter is used to specify if the learning process is batch , online or minibatch.
+        param_dic: the dictionary that contains the value of the hyper parameters beta.
+        drop: dropout parameter to have the option of using the dropout technique.
+    
+    Returns:
+        
+        dictionary:parameters a dictionary that contains the updated weights and biases
+        array:Costs an array that contain the cost of each iteration
 
            """
 
@@ -476,23 +500,27 @@ def mom_optm(model, X, Y, num_iterations=10000, print_cost=False ,print_cost_eac
 
         return parameters, costs
 def gd_optm_steepst(model, X, Y, num_iterations=10000, print_cost=False ,print_cost_each=100, cont=0,learning_rate=0.01, reg_term=0, batch_size=0, param_dic=None,drop=0):
-    """Summary: The function applies the steepest gradient descent optimizer to update the weight and bias parameters.
-               Parameters:
-               :param model (multilayer): instance of the multilayer class contains the models parameters to be updated.
-               :param X: the input feature vector.
-               :param Y: the labels.
-               :param num_iterations: number of epochs.
-               :param print_cost: optional parameter to show the cost function.
-               :param print_cost_each: this parameter is used when "print_cost" is set True to specify when to print the cost ie: after how many iterations.
-               :param cont: not used in this function
-               :param learning_rate: learning rate to be used in updating the parameters.
-               :param reg_term: lamda term added to the loss function to prevent over fitting. This parameter can be set to zero if no regulization is needed.
-               :param batch_size: This parameter is used to specify if the learning process is batch , online or minibatch.
-               :param param_dic: not used in this function.
-               :param drop: dropout parameter to have the option of using the dropout technique.
-               Returns:
-               dictionary:parameters a dictionary that contains the updated weights and biases
-               array:Costs an array that contain the cost of each iteration
+    """The function applies the steepest gradient descent optimizer to update the weight and bias parameters.
+               
+    Parameters:
+                
+        model (multilayer): instance of the multilayer class contains the models parameters to be updated.
+        X: the input feature vector.
+        Y: the labels.
+        num_iterations: number of epochs.
+        print_cost: optional parameter to show the cost function.
+        print_cost_each: this parameter is used when "print_cost" is set True to specify when to print the cost ie: after how many iterations.
+        cont: not used in this function
+        learning_rate: learning rate to be used in updating the parameters.
+        reg_term: lamda term added to the loss function to prevent over fitting. This parameter can be set to zero if no regulization is needed.
+        batch_size: This parameter is used to specify if the learning process is batch , online or minibatch.
+        param_dic: not used in this function.
+        drop: dropout parameter to have the option of using the dropout technique.
+               
+    Returns:
+        
+        dictionary:parameters a dictionary that contains the updated weights and biases
+        array:Costs an array that contain the cost of each iteration
 
            """
     costs = []

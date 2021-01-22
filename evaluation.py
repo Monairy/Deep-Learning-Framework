@@ -4,15 +4,15 @@ import matplotlib.pylab as plt
 
 
 def conf_mat (A,Y,thres=0.5):
-    '''function that calculates  the confusion matrix from predicted and truth matrices
+    '''This function calculates the confusion matrix from predicted and truth matrices
 
     Parameters:
         A (numpy matrix): predicted classification for each example
         Y (numpy matrix): true classification for each example
-        thres (float) : threshold value, values above it are considered true
+        thres (float): threshold value, values above it are considered true
 
     Returns:
-        numpy matrix : confusion matrix
+        (numpy matrix): confusion matrix
 
     '''
 
@@ -33,7 +33,7 @@ def conf_mat (A,Y,thres=0.5):
     return confusion_matrix
 
 def print_conf_mat(A,Y,thres=0.5):
-    '''function that prints  the confusion matrix from predicted and truth matrices
+    '''This function prints the confusion matrix from predicted and truth matrices
 
     Parameters:
         A (numpy matrix): predicted classification for each example
@@ -45,16 +45,16 @@ def print_conf_mat(A,Y,thres=0.5):
     plt.show()
 
 def conf_table(cnf_matrix):
-    '''function that calculates  the confusion table from confusion matrix
+    '''Tis function calculates the confusion table from confusion matrix
 
     Parameters:
         cnf_matrix (numpy matrix): confusion matrix
 
     Returns:
-        tuple of floats : representing TP for each class
-        tuple of floats : representing FP for each class
-        tuple of floats : representing TN for each class
-        tuple of floats : representing FN for each class
+        (tuple of floats): representing TP for each class
+        (tuple of floats): representing FP for each class
+        (tuple of floats): representing TN for each class
+        (tuple of floats): representing FN for each class
 
     '''
     FP = cnf_matrix.sum(axis=0) - np.diag(cnf_matrix)
@@ -69,15 +69,15 @@ def conf_table(cnf_matrix):
     return FP,FN,TP,TN
 
 def accuracy_score(A,Y,thres=0.5):
-    '''function that calculates  the accuracy of the model using predicted and truth values
+    '''This function calculates the accuracy of the model using predicted and truth values
 
     Parameters:
         A (numpy matrix): predicted classification for each example
         Y (numpy matrix): true classification for each example
-        thres (float) : threshold value, values above it are considered true
+        thres (float): threshold value, values above it are considered true
 
     Returns:
-        float : accuracy
+        (float): accuracy
 
     '''
     if Y.shape[0] == 1:
@@ -91,15 +91,15 @@ def accuracy_score(A,Y,thres=0.5):
     return ACC * 100
 
 def precision_score(A, Y, thres=0.5):
-    '''function that calculates  the precision of the model using predicted and truth values
+    '''This function calculates the precision of the model using predicted and truth values
 
     Parameters:
         A (numpy matrix): predicted classification for each example
         Y (numpy matrix): true classification for each example
-        thres (float) : threshold value, values above it are considered true
+        thres (float): threshold value, values above it are considered true
 
     Returns:
-        float : precision
+        (float): precision
 
     '''
     if Y.shape[0] == 1:
@@ -113,15 +113,15 @@ def precision_score(A, Y, thres=0.5):
 
 
 def recall_score(A,Y,thres=0.5):
-    '''function that calculates  the recall of the model using predicted and truth values
+    '''This function calculates the recall of the model using predicted and truth values
 
     Parameters:
         A (numpy matrix): predicted classification for each example
         Y (numpy matrix): true classification for each example
-        thres (float) : threshold value, values above it are considered true
+        thres (float): threshold value, values above it are considered true
 
     Returns:
-        float : recall
+        (float): recall
 
     '''
 
@@ -136,7 +136,7 @@ def recall_score(A,Y,thres=0.5):
     return rec * 100
 
 def f1_score(A,Y,thres=0.5):
-    '''function that calculates  the f1_score of the model using predicted and truth values
+    '''This function calculates the f1_score of the model using predicted and truth values
 
     Parameters:
         A (numpy matrix): predicted classification for each example
@@ -144,7 +144,7 @@ def f1_score(A,Y,thres=0.5):
         thres (float) : threshold value, values above it are considered true
 
     Returns:
-        float : f1_score
+        (float): f1_score
 
     '''
 
