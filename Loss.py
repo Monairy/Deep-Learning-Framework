@@ -163,6 +163,7 @@ def square_loss(m, A, Y):
     Parameters: m(int):examples no. / A(float vector): The output y_hat (score)  / Y(float vector): The label
     Returns: cost(float): the total loss
     """
+    #return (1/(2*m)) * np.sum(np.dot((A-Y).T,(A-Y)))
     cost = (1/2*m) * np.sum(np.square(Y - A))
     return cost
 
