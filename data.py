@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+ import pickle
 
 
 def batch_normlize(x):
@@ -79,6 +80,7 @@ class visualize:
  def addpoint_y(self,pointy):
      
          self.points_y.append(pointy)
+          
          if (len(self.points_x) ==0):
             self.points_x=[1]
                
@@ -91,7 +93,33 @@ class visualize:
 
             
     
-a = visualize("cost function","cost","iterations")
+        
 
-for i in range(50):
-           a.addpoint_y(i)
+
+def save(filename,model):
+     """ This function saves the model ( all of it's parameters, weights, losses ,... ) in an external file 
+
+    Parameters:
+    filename (string): Path of file to be saved in, filename must be ".sav" type.
+    model    (object): "model" required to be saved.
+
+    Returns:
+    None
+
+   """
+    pickle.dump(model, open(filename, 'wb'))
+
+def retrive(filename):
+     """ This function loads a saved model ( all of it's parameters, weights, losses, ...) from external file
+
+    Parameters:
+    filename (string): Path of file to be retrived, filename must be ".sav" type.
+
+    Returns:
+    object : Object of model that saved before as whole with its structure(Layers,Nodes,Activation functions)
+
+   """
+    return pickle.load(open(filename, 'rb'))
+         
+          
+          
