@@ -1,5 +1,5 @@
 # Deep-Learning-Framework 
-Deep learning framework to ease building of nueral network models.
+Deep learning framework to ease building of neural network models.
 
 ## To install: ##
 ``` pip install Your-Fav-DL-Framework ```   
