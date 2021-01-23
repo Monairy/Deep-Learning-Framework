@@ -1,4 +1,4 @@
-## Deep-Learning-Framework
+### Deep-Learning-Framework
 
 A data module to read and process datasets
 A NN module to design different architectures
