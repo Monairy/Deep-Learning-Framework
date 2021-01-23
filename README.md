@@ -2,7 +2,7 @@
 Deep learning framework to ease building of nueral network models.
 
 ## to install: ##
-``` pip install Your-Fav-DL-Framework ``` \n
+``` pip install Your-Fav-DL-Framework \n``` 
 ``` import Your_Fav_DL_Framework ```
 
 
