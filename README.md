@@ -1,5 +1,8 @@
-### Deep-Learning-Framework
+#### Deep-Learning-Framework
 Deep learning framework to ease building of nueral network models.
 
 ## to install:
 ``` pip install dlFramework-monairy```
+
+## documentation:
+https://monairy.github.io
