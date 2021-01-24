@@ -62,7 +62,7 @@ def perceptron_criteria_der(m, A, Y):
     b[p > 0] = 0
     b[p <= 0] = -Y[p <= 0]
     b[b == 0] = -1
-    return b#.reshape(1,m)
+    return b.reshape(1,m)
 
 def svm(m, A, Y):
     """Hinge Loss (Soft Margin) SVM
@@ -96,12 +96,8 @@ def svm_der(m, A, Y):
     b[p > 0] = 0
     b[p <= 0] = -Y[p <= 0]
     b[b == 0] = -1
-    return b#.reshape(1,m)
+    return b.reshape(1,m)
 
-m = 4
-A = np.array([.3, -.4, -.5, 1.6])
-Y = np.array([0, 1, 0, 1])
-print(svm_der(m, A, Y))
 
 def cross_multi_class(m, A, Y): # Multiclass Log LikelihoodLoss Function - Logistic Regression SoftMax Activation Function
     # v1 = Y * A
@@ -134,9 +130,6 @@ def cross_multi_class_der(m, A, Y):
     Returns:
         (Array of floats): The derivative values of cost function
     """
-    z1 = np.array(A, copy=True)
-    y1 = np.array(Y, copy=True)
-    y1[y1 == 1] = -1
     return A - Y
 
 def multiclass_perceptron_loss(m, A, Y):
@@ -165,17 +158,12 @@ def multiclass_perceptron_loss_der(m, A, Y):
     Returns:
         p(Array of floats): The derivative values of cost function
     """
-   # if np.arange(np.shape(A)) == np.argmax(Y*A):
-    #    return - np.gradient(np.max(Y*A))
-    #elif np.arange(np.shape(A)) != np.argmax(Y*A):
-     #   return np.gradient(A)
-    #else:
-     #   return 0
-
     p = np.zeros(A.shape)
-    p[np.arange(A.shape[0]) == np.argmax(Y*A)] = -np.max(Y*A)
-    p[np.arange(A.shape[0]) != np.argmax(Y*A)] = np.gradient(A)[np.arange(A.shape[0]) != np.argmax(Y * A)]
+    for i in np.arange(A.shape[0]):
+        p[i][np.argmax(A*Y, axis=1)[i]] = -1
+        p[i][np.arange(A.shape[1]) != np.argmax(Y*A, axis=1)[i]] = 1
     return p
+
 
 def multiclass_svm(m, A, Y):
     """Multiclass Weston-Watkins SVM Loss
@@ -192,6 +180,7 @@ def multiclass_svm(m, A, Y):
     cost = (1 / m) * (np.sum(np.sum(D, axis=1)) - m)
     return cost
 
+
 def multiclass_svm_der(m, A, Y):
     """The Derivative of Multiclass Weston-Watkins SVM Loss Function
 
@@ -203,16 +192,14 @@ def multiclass_svm_der(m, A, Y):
     Returns: 
         p (Array of floats): The derivative values of cost function
     """
-    #if np.arange(np.shape(A)) == np.argmax(Y*A):
-    #    return - np.gradient(np.max(Y*A))
-    #elif np.arange(np.shape(A)) != np.argmax(Y*A):
-    #    return np.gradient(A)
-   # else:
-    #    return 0
-
+    D = np.maximum(1 + A - np.max(Y*A, axis=1).reshape(m,1), 0)
+    L = np.sum(D, axis=1) - 1
+    L[L==0] = -1
+    s = np.sum(np.array(L) > 0, axis=0)
     p = np.zeros(A.shape)
-    p[np.arange(A.shape[0]) == np.argmax(Y*A)] = -np.max(Y*A)
-    p[np.arange(A.shape[0]) != np.argmax(Y*A)] = np.gradient(A)[np.arange(A.shape[0]) != np.argmax(Y * A)]
+    for i in np.arange(A.shape[0]):
+        p[i][np.argmax(A*Y, axis=1)[i]] = -1 * s
+        p[i][np.arange(A.shape[1]) != np.argmax(Y*A, axis=1)[i]] = 1
     return p
 
 def multinomial_logistic_loss(m, A, Y):
@@ -362,6 +349,8 @@ def determine_der_cost_func(func):
 
 
 m = 3
-A = np.array([[3, 4, 5, 6], [7, 8, 9, 5], [1, 0, 4, 52]])
+A = np.array([[3, 4, 2, 6], [7, 8, 8, 5], [1, 4, 4, 52]])
 Y = np.array([[0, 0, 0, 1], [0, 1, 0, 0], [0, 0, 1, 0]])
-print(multiclass_svm(m, A, Y))
+print(multiclass_svm_der(m, A, Y))
+
+
