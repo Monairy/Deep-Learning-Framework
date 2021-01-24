@@ -346,11 +346,3 @@ def determine_der_cost_func(func):
         return multiclass_svm_der
     if func == multinomial_logistic_loss:
         return multinomial_logistic_loss_der
-
-
-m = 3
-A = np.array([[3, 4, 2, 6], [7, 8, 8, 5], [1, 4, 4, 52]])
-Y = np.array([[0, 0, 0, 1], [0, 1, 0, 0], [0, 0, 1, 0]])
-print(multiclass_svm_der(m, A, Y))
-
-
