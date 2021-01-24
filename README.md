@@ -8,3 +8,8 @@ Deep learning framework to ease building of neural network models.
 
 ## Documentation:
 https://monairy.github.io
+
+## google colab notebook which contains the trainning on minst dataset
+
+https://colab.research.google.com/drive/1Da4ADh-c7vo8RryzNpryoGdcJ6Pg1C4T?usp=sharing
+
